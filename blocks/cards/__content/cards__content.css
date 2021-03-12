@@ -2,8 +2,8 @@
   margin: 0 auto;
   margin-top: 25px;
   margin-bottom: 30px;
-  max-width: 246px;
+  max-width: calc(100% - 40px);
   display: flex;
   justify-content: space-between;
-  overflow: auto;
+  overflow: hidden;
 }

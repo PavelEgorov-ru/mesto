@@ -1,3 +1,12 @@
 .section_size_wide {
-  max-width: calc(100% - 400px);
+
+  margin-left: calc((100% - 880px)/2);
+  margin-right: calc((100% - 880px)/2);
 }
+
+@media screen and (max-width: 980px) {
+  .section_size_wide {
+    margin-left: calc((100% - 768px)/2);
+    margin-right: calc((100% - 768px)/2);
+  }
+}  
