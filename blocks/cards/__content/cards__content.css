@@ -1,0 +1,9 @@
+.cards__content {
+  margin: 0 auto;
+  margin-top: 25px;
+  margin-bottom: 30px;
+  max-width: 246px;
+  display: flex;
+  justify-content: space-between;
+  overflow: auto;
+}
