@@ -6,3 +6,18 @@
   display: flex;
   justify-content: flex-start;
 }
+
+@media screen and (max-width: 880px) {
+  .profile__title {
+    font-size: 35px;
+    font-weight: 500;
+    line-height: 1.14em;
+  }
+}
+
+@media screen and (max-width: 568px) {
+  .profile__title {
+    font-size: 27px;
+    line-height: 1.22em;
+  }
+}

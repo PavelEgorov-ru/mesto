@@ -1,3 +1,5 @@
-.logo {
-  opacity: 1;
+@media screen and (max-width: 568px) {
+  .logo {
+    margin-left: 27px;
+  }
 }
