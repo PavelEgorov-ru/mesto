@@ -3,6 +3,7 @@
   flex-direction: column;
   justify-content: center;
   gap: 16px;
+
 }
 
 @media screen and (max-width: 568px) {

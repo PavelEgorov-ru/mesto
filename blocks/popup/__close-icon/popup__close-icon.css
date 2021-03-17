@@ -1,0 +1,11 @@
+.popup__close-icon {
+  color: #fff;
+  margin: 0;
+  font-size: 70px;
+  font-weight: 100;
+  position: absolute;
+  top: -60px;
+  right: -35px;
+  transform: rotate(-45deg);
+  cursor: pointer;
+}
