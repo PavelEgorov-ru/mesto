@@ -13,6 +13,8 @@ let nameProfile = document.querySelector('.profile__title');
 let jobProfile= document.querySelector('.profile__subtitle');
 let nameInput = document.querySelector ('.popup__item_el_name');
 let jobInput = document.querySelector ('.popup__item_el_comment');
+nameInput.textContent=nameProfile.value;
+jobInput.textContent=jobProfile.value;
 
 // функция открывающая попап
 function openPopup () {
