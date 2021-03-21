@@ -1,7 +1,7 @@
 let popup = document.querySelector('.popup');
 
 let popupEdit = document.querySelector('.profile__edit-button');
-
+console.log(popupEdit);
 let popupClose = document.querySelector('.popup__close-icon');
 
 let form = document.querySelector('.popup__content');
