@@ -7,9 +7,3 @@
   flex-direction: column;
   gap: 50px;
 }
-
-@media screen and (max-width: 568px) {
-  .content {
-    padding-bottom: 48px;
-  }
-}

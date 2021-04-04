@@ -1,4 +1,3 @@
-
 // попапы
 const popupProfile = document.querySelector('.popup_profile');
 const popupCards = document.querySelector('.popup_cards');
@@ -12,13 +11,13 @@ const popupProfileEditText = document.querySelector('.profile__subtitle');
 const profileEditBtn = document.querySelector('.profile__edit-button');
 const cardsEditBtn = document.querySelector('.profile__button-card');
 
+
 // кнопки закрытия попапов
 const popupProfileCloseBtn = popupProfile.querySelector('.popup__close-icon-profile');
 const popupCardsCloseBtn = popupCards.querySelector('.popup__close-icon-cards');
 
 //кнопка удаления карточки
 const popupCardsDeletCards = popupCards.querySelector('.cards__delete-icon');
-
 
 // поля ввода попапа
 const popupProfileInputName = popupProfile.querySelector('.popup__item_el_name');
@@ -74,7 +73,6 @@ function closePopup (popup) {
 // функция отправки формы
 function formSubmitHandler(evt){
   evt.preventDefault();
-
   popupProfileEditName.textContent = popupProfileInputName.value;
   popupProfileEditText.textContent = popupProfileInputText.value;
   closePopup(popupProfile);
