@@ -27,8 +27,8 @@ const popupCardsItemLink = popupCards.querySelector('.popup__item_el_link');
 
 
 // кнопки отправки форм
-const popupProfileSave = popupProfile.querySelector('.popup_button_profile_save');
-const popupCardsSave = popupCards.querySelector('.popup_button_cards_save');
+const popupProfileSave = popupProfile.querySelector('.popup__button_profile_save');
+const popupCardsSave = popupCards.querySelector('.popup__button_cards_save');
 
 // форма 
 const cardForm = document.querySelector('.popup__content_card');
