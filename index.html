@@ -7,15 +7,35 @@
     <title>Место-Россия</title>
   </head>
   <body class="page">
-    <div class="popup">
+    <div class="popup popup_profile">
       <div class="popup__overlay"></div>
-      <form class="popup__content">
-        <div class="popup__close-icon">+</div>
+      <form class="popup__content popup__content_profile">
+        <div class="popup__close-icon opacity popup__close-icon-profile">+</div>
         <h2 class="popup__title">Редактировать профиль</h2>
         <input type="text" class="popup__item popup__item_el_name"  placeholder="имя">
         <input type="text" class="popup__item popup__item_el_comment"  placeholder="o себе">
-        <button type="submit" class="popup__button" id="button"> Сохранить </button>
+        <button type="submit" class="popup__button popup_button_profile_save" id="button"> Сохранить </button>
       </form>
+    </div>
+
+    <div class="popup popup_cards">
+      <div class="popup__overlay"></div>
+      <form class="popup__content  popup__content_card">
+        <div class="popup__close-icon opacity popup__close-icon-cards">+</div>
+        <h2 class="popup__title">Новое место</h2>
+        <input type="text" class="popup__item popup__item_el_place"  placeholder="название">
+        <input type="text" class="popup__item popup__item_el_link"  placeholder="ссылка на картинку">
+        <button type="submit" class="popup__button popup_button_cards_save" id="button"> Сoхранить </button>
+      </form> 
+    </div>
+
+    <div class="popup popup_add-image">
+      <div class="popup__overlay"></div>
+      <figure class="popup__figure ">
+        <div class="popup__close-icon opacity popup__close-icon-add">+</div>
+        <img src="" class=" popup__image">
+        <figcaption class="popup__figcaption"></figcaption>
+      </figure>
     </div>
     <div class="page__container">
       <div class="header section section_size_narrow">
@@ -27,65 +47,33 @@
             <img src="./images/image_avatar.jpg" alt="фотография Жак-Ив Кусто" class="profile__avatar">
             <article class="profile__texts">
               <div class="profile__rows">
-                <h1 class="profile__title">
-                  Жак-Ив Кусто
-                </h1>
+                <h1 class="profile__title">Жак-Ив Кусто</h1>
                 <img src="./images/Vector_pen.svg" alt="иконка редактирования профиля" class="profile__edit-button opacity popup_opened">
               </div>
               <h2 class="profile__subtitle">Исследователь океана</h2>
             </article>
           </div>
-          <img src="./images/Vector_plus.svg" alt="кнопка закрытия профиля" class="profile__button opacity">
+          <img src="./images/Vector_plus.svg"  class="profile__button profile__button-card opacity">
         </section>
         <section class="cards section section_size_wide">
-          <article class="cards__element">
-            <img src="./images/kirill-pershin-1088404-unsplash1.jpg" alt="заброшенная церковь в горах" class="cards__image">
-            <div class="cards__content">
-              <p class="cards__text">Карачаевск</p>
-              <img src="./images/Vector__like.svg" alt="кнопка мне нравится" class="cards__button-like opacity">
-            </div>         
-          </article>
-          <article class="cards__element">
-            <img src="./images/kirill-pershin-1404681-unsplash2.jpg" alt="восход в горах" class="cards__image">
-            <div class="cards__content">
-              <p class="cards__text">Гора Эльбрус</p>
-              <img src="./images/Vector__like.svg" alt="кнопка мне нравится" class="cards__button-like opacity">
-            </div>
-          </article>
-          <article class="cards__element">
-            <img src="./images/kirill-pershin-1556355-unsplash3.jpg" alt="вершина горы" class="cards__image">
-            <div class="cards__content">
-              <p class="cards__text">Домбай</p>
-              <img src="./images/Vector__like.svg" alt="кнопка мне нравится" class="cards__button-like opacity">
-            </div>
-          </article>
-          <article class="cards__element">
-            <img src="./images/kirill-pershin-1404681-unsplash4.jpg" alt="восход в горах" class="cards__image">
-            <div class="cards__content">
-              <p class="cards__text">Гора Эльбрус</p>
-              <img src="./images/Vector__like.svg" alt="кнопка мне нравится" class="cards__button-like opacity">
-            </div>
-          </article>
-          <article class="cards__element">
-            <img src="./images/kirill-pershin-1556355-unsplash5.jpg" alt="вершина горы" class="cards__image">
-            <div class="cards__content">
-              <p class="cards__text">Домбай</p>
-              <img src="./images/Vector__like.svg" alt="кнопка мне нравится" class="cards__button-like opacity">
-            </div>
-          </article>
-          <article class="cards__element">
-            <img src="./images/kirill-pershin-1088404-unsplash6.jpg" alt="заброшенная церковь в горах" class="cards__image">
-            <div class="cards__content">
-              <p class="cards__text">Карачаево-Черкесия</p>
-              <img src="./images/Vector__like.svg" alt="кнопка мне нравится" class="cards__button-like opacity">
-            </div>
-          </article>
+          
         </section>
       </main>
       <div class="footer section section_size_wide">
         <p class="footer__copyright">© 2021 Mesto Russia</p>
       </div>
     </div>
+    <template class = "template-cards">
+      <article class="cards__element">
+        <img src="./images/Group2.png" alt="кнопка удалить" class="cards__delete-icon opacity">
+        <img class="cards__image">
+        <div class="cards__content">
+          <p class="cards__text"></p>
+          <div class="cards__button-like opacity"></div>
+          <!-- <img src="./images/Vector__like.svg" alt="кнопка мне нравится" class="cards__button-like opacity"> -->
+        </div>         
+      </article>
+    </template>
     <script src="./scripts/index.js"></script>
   </body>
 </html>

@@ -9,4 +9,17 @@
   border: none;
   border-radius: 2px;
   cursor: pointer;
+  transition: opacity .2s linear .2s;
+}
+
+.popup__button:hover {
+  opacity: .8;
+}
+
+@media screen and (max-width: 568px) {
+  .popup__button {
+    margin-top: 45px;
+    font-size: 14px;
+    max-height: 46px;
+  }
 }
