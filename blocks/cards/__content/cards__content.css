@@ -1,9 +1,13 @@
 .cards__content {
-  margin: 0 auto;
-  margin-top: 25px;
-  margin-bottom: 30px;
-  max-width: calc(100% - 40px);
-  display: flex;
-  justify-content: space-between;
-  overflow: hidden;
+ margin: 0 auto;
+ margin-top: 25px;
+ margin-bottom: 25px;
+ max-width: calc(100% - 40px);
+ display: flex;
+ justify-content: space-between;
+ box-sizing: border-box;
+ align-items: center;
+  
+  
+  
 }

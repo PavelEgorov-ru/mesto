@@ -1,9 +1,8 @@
 .cards__button-like {
-  background-color: rgba(0, 0, 0, 0);
-  border: none;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-left: 30px;
+  width: 25px;
+  height: 22px;
+  background-image: url(./../../../images/like.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
 }
+
