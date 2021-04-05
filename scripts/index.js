@@ -16,19 +16,12 @@ const cardsEditBtn = document.querySelector('.profile__button-card');
 const popupProfileCloseBtn = popupProfile.querySelector('.popup__close-icon-profile');
 const popupCardsCloseBtn = popupCards.querySelector('.popup__close-icon-cards');
 
-//кнопка удаления карточки
-const popupCardsDeletCards = popupCards.querySelector('.cards__delete-icon');
 
 // поля ввода попапа
 const popupProfileInputName = popupProfile.querySelector('.popup__item_el_name');
 const popupProfileInputText = popupProfile.querySelector('.popup__item_el_comment');
 const popupCardsItemPlace = popupCards.querySelector('.popup__item_el_place');
 const popupCardsItemLink = popupCards.querySelector('.popup__item_el_link');
-
-
-// кнопки отправки форм
-const popupProfileSave = popupProfile.querySelector('.popup__button_profile_save');
-const popupCardsSave = popupCards.querySelector('.popup__button_cards_save');
 
 // форма 
 const cardForm = document.querySelector('.popup__content_card');
@@ -102,11 +95,11 @@ popupCardsCloseBtn.addEventListener('click', function() {
   closePopup(popupCards);
 });
 
-
+// переменная общей секции с карточками
+const cardsContainer = document.querySelector('.cards');
 
 // обходчик карточек при загрузке
-initialCards.forEach( function(item) {
-  const cardsContainer = document.querySelector('.cards');
+initialCards.forEach( function(item) {  
   const cardElement = createCard(item);
   cardsContainer.append(cardElement);
 });
@@ -124,6 +117,7 @@ function createCard (item) {
   const backet = cardsTemplateClone.querySelector('.cards__delete-icon');
   cardsElement.querySelector('.cards__image').src = item.link;
   cardsElement.querySelector('.cards__text').textContent = item.name;
+  cardsElement.querySelector('.cards__image').alt = item.name;
  
  // кнопка удаления карточки 
       function deleteCard(){
@@ -160,7 +154,6 @@ popupImageClose.addEventListener('click', function() {
 //функция отправки формы карточки
 function formSubmitCards(evt){
   evt.preventDefault();
-  const cardsContainer = document.querySelector('.cards');
   const cardElement = createCard({name: popupCardsItemPlace.value , link: popupCardsItemLink.value})
   cardsContainer.prepend(cardElement);
   closePopup(popupCards);
