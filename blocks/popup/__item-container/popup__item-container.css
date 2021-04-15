@@ -1,0 +1,9 @@
+.popup__item-container {
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.popup__item-container:nth-child(2n) {
+  margin: 0;
+}
