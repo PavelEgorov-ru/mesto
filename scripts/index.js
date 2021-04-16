@@ -184,7 +184,6 @@ function enableEscListener() {
 }
 // определяем что это нужное событие
 function handleEscListener (e) {
-  console.log('2')
   e.preventDefault();
   isEscEvt(e, closePopup);
 }
