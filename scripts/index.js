@@ -3,6 +3,9 @@ const popupProfile = document.querySelector('.popup_profile');
 const popupCards = document.querySelector('.popup_cards');
 const popupAddImage = document.querySelector('.popup_add-image');
 
+//массив попапов
+const popupArray = Array.from(document.querySelectorAll('.popup'));
+
 // профиль
 const popupProfileEditName = document.querySelector('.profile__title');
 const popupProfileEditText = document.querySelector('.profile__subtitle');
@@ -16,15 +19,12 @@ const cardsEditBtn = document.querySelector('.profile__button-card');
 const popupProfileCloseBtn = popupProfile.querySelector('.popup__close-icon-profile');
 const popupCardsCloseBtn = popupCards.querySelector('.popup__close-icon-cards');
 
-//кнопка удаления карточки
-const popupCardsDeletCards = popupCards.querySelector('.cards__delete-icon');
 
 // поля ввода попапа
 const popupProfileInputName = popupProfile.querySelector('.popup__item_el_name');
 const popupProfileInputText = popupProfile.querySelector('.popup__item_el_comment');
 const popupCardsItemPlace = popupCards.querySelector('.popup__item_el_place');
 const popupCardsItemLink = popupCards.querySelector('.popup__item_el_link');
-
 
 // форма 
 const cardForm = document.querySelector('.popup__content_card');
@@ -61,10 +61,12 @@ const initialCards = [
 // ощбщая фуекция открытия попапа
 function openPopup (popup) {
   popup.classList.add('popup_visible');
+  enableEscListener()
 };
 // общая функция закрытия попапа
 function closePopup (popup) {
   popup.classList.remove('popup_visible');
+  document.removeEventListener('keyup', handleEscListener)
 };
 // функция отправки формы
 function formSubmitHandler(evt){
@@ -98,11 +100,11 @@ popupCardsCloseBtn.addEventListener('click', function() {
   closePopup(popupCards);
 });
 
-
+// переменная общей секции с карточками
+const cardsContainer = document.querySelector('.cards');
 
 // обходчик карточек при загрузке
-initialCards.forEach( function(item) {
-  const cardsContainer = document.querySelector('.cards');
+initialCards.forEach( function(item) {  
   const cardElement = createCard(item);
   cardsContainer.append(cardElement);
 });
@@ -120,13 +122,14 @@ function createCard (item) {
   const backet = cardsTemplateClone.querySelector('.cards__delete-icon');
   cardsElement.querySelector('.cards__image').src = item.link;
   cardsElement.querySelector('.cards__text').textContent = item.name;
+  cardsElement.querySelector('.cards__image').alt = item.name;
  
  // кнопка удаления карточки 
       function deleteCard(){
         cardsElement.remove();
       };
  // функция открытия попапа с текущей карточкой
-      function openPopupImg (e) {
+      function openPopupImg () {
         popupImageLink.src = item.link;
         popupImageCaption.textContent = item.name;
         openPopup(popupAddImage);
@@ -156,7 +159,6 @@ popupImageClose.addEventListener('click', function() {
 //функция отправки формы карточки
 function formSubmitCards(evt){
   evt.preventDefault();
-  const cardsContainer = document.querySelector('.cards');
   const cardElement = createCard({name: popupCardsItemPlace.value , link: popupCardsItemLink.value})
   cardsContainer.prepend(cardElement);
   closePopup(popupCards);
@@ -166,4 +168,31 @@ function formSubmitCards(evt){
 //слушатель отправки формы карточки
 cardForm.addEventListener('submit', formSubmitCards);
 
+//обходчик по массивам, навешивает слушатели на оверлей
+popupArray.forEach((popupNew) => {
+  const overlay = popupNew.querySelector('.popup__overlay');
+  overlay.addEventListener('click', function(e) {
+    if(e.target === e.currentTarget) {
+      closePopup(popupNew);
+    } 
+  })
+});
 
+//навешиваем слушатель кнопки Esc на документ
+function enableEscListener() {
+  document.addEventListener('keyup', handleEscListener);
+}
+// определяем что это нужное событие
+function handleEscListener (e) {
+  console.log('2')
+  e.preventDefault();
+  isEscEvt(e, closePopup);
+}
+
+//при нужном событии активный попап передается в функцию закрытия попапа
+function isEscEvt(e, action) {
+  if (e.key === 'Escape') {
+  const popupActiv = document.querySelector('.popup_visible');
+  action(popupActiv);
+  }
+}
