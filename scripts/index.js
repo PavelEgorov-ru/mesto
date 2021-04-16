@@ -3,6 +3,9 @@ const popupProfile = document.querySelector('.popup_profile');
 const popupCards = document.querySelector('.popup_cards');
 const popupAddImage = document.querySelector('.popup_add-image');
 
+//массив попапов
+const popupArray = Array.from(document.querySelectorAll('.popup'));
+
 // профиль
 const popupProfileEditName = document.querySelector('.profile__title');
 const popupProfileEditText = document.querySelector('.profile__subtitle');
@@ -58,10 +61,12 @@ const initialCards = [
 // ощбщая фуекция открытия попапа
 function openPopup (popup) {
   popup.classList.add('popup_visible');
+  enableEscListener()
 };
 // общая функция закрытия попапа
 function closePopup (popup) {
   popup.classList.remove('popup_visible');
+  document.removeEventListener('keyup', handleEscListener)
 };
 // функция отправки формы
 function formSubmitHandler(evt){
@@ -124,7 +129,7 @@ function createCard (item) {
         cardsElement.remove();
       };
  // функция открытия попапа с текущей карточкой
-      function openPopupImg (e) {
+      function openPopupImg () {
         popupImageLink.src = item.link;
         popupImageCaption.textContent = item.name;
         openPopup(popupAddImage);
@@ -163,4 +168,31 @@ function formSubmitCards(evt){
 //слушатель отправки формы карточки
 cardForm.addEventListener('submit', formSubmitCards);
 
+//обходчик по массивам, навешивает слушатели на оверлей
+popupArray.forEach((popupNew) => {
+  const overlay = popupNew.querySelector('.popup__overlay');
+  overlay.addEventListener('click', function(e) {
+    if(e.target === e.currentTarget) {
+      closePopup(popupNew);
+    } 
+  })
+});
 
+//навешиваем слушатель кнопки Esc на документ
+function enableEscListener() {
+  document.addEventListener('keyup', handleEscListener);
+}
+// определяем что это нужное событие
+function handleEscListener (e) {
+  console.log('2')
+  e.preventDefault();
+  isEscEvt(e, closePopup);
+}
+
+//при нужном событии активный попап передается в функцию закрытия попапа
+function isEscEvt(e, action) {
+  if (e.key === 'Escape') {
+  const popupActiv = document.querySelector('.popup_visible');
+  action(popupActiv);
+  }
+}
