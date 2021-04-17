@@ -58,8 +58,19 @@ const initialCards = [
   }
 ];
 
+// переменная с объектом классов и сеоекторов
+const config = {
+  formSelector: '.popup__content',
+  inputSelector: '.popup__item',
+  submitButtonSelector: '.popup__button',
+  inactiveButtonClass: 'popup__button_disabled',// засеривание кнопки
+  inputErrorClass: 'popup__item_type_error',//подчеркивание поля ввода
+  errorClass: 'popup__error_visible' // видимость ошибки
+};
+
 // ощбщая фуекция открытия попапа
 function openPopup (popup) {
+  resetFormState(popup, config)
   popup.classList.add('popup_visible');
   enableEscListener()
 };
@@ -93,11 +104,15 @@ profileForm.addEventListener('submit', formSubmitHandler);
 // ... открытя формы карточки
 cardsEditBtn.addEventListener('click', function() {
   openPopup(popupCards);
+  const button = popupCards.querySelector(config.submitButtonSelector);
+  const inputs = Array.from(popupCards.querySelectorAll(config.inputSelector))
+  toggleButtonState(button, config, inputs);
 });
 
 // ... закрытия формы карточки
 popupCardsCloseBtn.addEventListener('click', function() {
   closePopup(popupCards);
+  cardForm.reset()
 });
 
 // переменная общей секции с карточками
@@ -195,3 +210,5 @@ function isEscEvt(e, action) {
   action(popupActiv);
   }
 }
+
+// подготовка формы 
