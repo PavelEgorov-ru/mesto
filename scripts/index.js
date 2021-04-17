@@ -112,7 +112,6 @@ cardsEditBtn.addEventListener('click', function() {
 // ... закрытия формы карточки
 popupCardsCloseBtn.addEventListener('click', function() {
   closePopup(popupCards);
-  cardForm.reset()
 });
 
 // переменная общей секции с карточками
@@ -134,10 +133,12 @@ function createCard (item) {
   const cardsTemplate = document.querySelector('.template-cards').content;
   const cardsTemplateClone = cardsTemplate.cloneNode(true);
   const cardsElement = cardsTemplateClone.querySelector('.cards__element');
+  const cardsText = cardsElement.querySelector('.cards__text');
+  const cardsImage = cardsElement.querySelector('.cards__image');
   const backet = cardsTemplateClone.querySelector('.cards__delete-icon');
-  cardsElement.querySelector('.cards__image').src = item.link;
-  cardsElement.querySelector('.cards__text').textContent = item.name;
-  cardsElement.querySelector('.cards__image').alt = item.name;
+  cardsImage.src = item.link;
+  cardsText.textContent = item.name;
+  cardsImage.alt = item.name;
  
  // кнопка удаления карточки 
       function deleteCard(){

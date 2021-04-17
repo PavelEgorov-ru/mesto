@@ -39,7 +39,7 @@
 @import url('./../blocks/profile/__button-plus/profile__button-pluse.css');
 @import url('./../blocks/cards/cards.css');
 @import url('./../blocks/cards/__element/cards__element.css');
-@import url('./../blocks/cards/__delet-icon/cards__delete-icon.css');
+@import url('./../blocks/cards/__delete-icon/cards__delete-icon.css');
 @import url('./../blocks/cards/__image/cards__image.css');
 @import url('./../blocks/cards/__content/cards__content.css');
 @import url('./../blocks/cards/__text/cards__text.css');
