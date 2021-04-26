@@ -4,12 +4,8 @@
   max-width: 75vw;
   max-height: 75vh;
   left: 50%;
-  transform: translateX(-50%);
-  top: 90px;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
-  @media screen and (max-width: 767px) {
-    .popup__figure {
-      top: 136px;
-    }
-  }
+  

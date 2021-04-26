@@ -1,3 +1,5 @@
+import {Card} from './card.js'
+
 // попапы
 const popupProfile = document.querySelector('.popup_profile');
 const popupCards = document.querySelector('.popup_cards');
@@ -120,8 +122,8 @@ const cardsContainer = document.querySelector('.cards');
 
 // обходчик карточек при загрузке
 initialCards.forEach( function(item) {  
-  const cardElement = createCard(item);
-  cardsContainer.append(cardElement);
+  const cardElement = new Card(item)
+  cardsContainer.append(cardElement.render());
 });
 
 const popupImageLink = popupAddImage.querySelector('.popup__image');
@@ -130,41 +132,42 @@ const popupImageClose = popupAddImage.querySelector('.popup__close-icon-add');
 
 
 // функция создания карточки
-function createCard (item) {
-  const cardsTemplate = document.querySelector('.template-cards').content;
-  const cardsTemplateClone = cardsTemplate.cloneNode(true);
-  const cardsElement = cardsTemplateClone.querySelector('.cards__element');
-  const backet = cardsTemplateClone.querySelector('.cards__delete-icon');
-  cardsElement.querySelector('.cards__image').src = item.link;
-  cardsElement.querySelector('.cards__text').textContent = item.name;
-  cardsElement.querySelector('.cards__image').alt = item.name;
+// function createCard (item) {
+//   const cardsTemplate = document.querySelector('.template-cards').content;
+//   const cardsTemplateClone = cardsTemplate.cloneNode(true);
+//   const cardsElement = cardsTemplateClone.querySelector('.cards__element');
+//   const backet = cardsTemplateClone.querySelector('.cards__delete-icon');
+//   const likeElement = cardsElement.querySelector('.cards__button-like');
+//   cardsElement.querySelector('.cards__image').src = item.link;
+//   cardsElement.querySelector('.cards__text').textContent = item.name;
+//   cardsElement.querySelector('.cards__image').alt = item.name;
  
- // кнопка удаления карточки 
-      function deleteCard(){
-        cardsElement.remove();
-      };
- // функция открытия попапа с текущей карточкой
-      function openPopupImg () {
-        popupImageLink.src = item.link;
-        popupImageCaption.textContent = item.name;
-        openPopup(popupAddImage);
-      };
+//  // кнопка удаления карточки 
+//       function deleteCard(){
+//         cardsElement.remove();
+//       };
+//  // функция открытия попапа с текущей карточкой
+//       function openPopupImg () {
+//         popupImageLink.src = item.link;
+//         popupImageCaption.textContent = item.name;
+//         openPopup(popupAddImage);
+//       };
 
-  const likeElement = cardsElement.querySelector('.cards__button-like');
-      function like () {
-        likeElement.classList.toggle('cards__button-like-active');
-      };
+ 
+//       function like () {
+//         likeElement.classList.toggle('cards__button-like-active');
+//       };
 
-     likeElement.addEventListener('click', like);
- // слушатель открытия попапа по картинке
-     cardsElement.querySelector('.cards__image').addEventListener('click', openPopupImg);
+//      likeElement.addEventListener('click', like);
+//  // слушатель открытия попапа по картинке
+//      cardsElement.querySelector('.cards__image').addEventListener('click', openPopupImg);
      
      
- // удадение карточки через корзину     
-     backet.addEventListener('click', deleteCard);
+//  // удадение карточки через корзину     
+//      backet.addEventListener('click', deleteCard);
 
-   return cardsElement;
-};
+//    return cardsElement;
+// };
 
 // слушатель закрытия попапа с картинкой
 popupImageClose.addEventListener('click', function() {
