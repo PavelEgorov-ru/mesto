@@ -1,3 +1,5 @@
+import {openPopup} from "./utilits.js";
+
 export class Card {
   constructor (card) {
     this.card = card;
@@ -22,7 +24,6 @@ export class Card {
 
     //создание слушателей
     makeEventListener() {
-      console.log('2')
       this.likeElement.addEventListener('click', () => this.like());
       this.backet.addEventListener('click', () => this.deleteCard())
       this.cardElementImage.addEventListener('click', () => this.preview())
@@ -35,7 +36,6 @@ export class Card {
 
     // // переключение лайка
     like() {
-      console.log('4')
       this.likeElement.classList.toggle('cards__button-like-active');
     }
 
@@ -46,7 +46,7 @@ export class Card {
       const popupImageCaption = popupAddImage.querySelector('.popup__figcaption');
       popupImageLink.src = this.card.link;
       popupImageCaption.textContent = this.card.name;
-      popupAddImage.classList.add('popup_visible');
+      openPopup(popupAddImage)
     };
 
      render() {

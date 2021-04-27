@@ -1,4 +1,6 @@
 import {Card} from './card.js'
+import {openPopup, closePopup} from './utilits.js'
+import {config} from './config.js'
 
 // попапы
 const popupProfile = document.querySelector('.popup_profile');
@@ -60,27 +62,6 @@ const initialCards = [
   }
 ];
 
-// переменная с объектом классов и сеоекторов
-const config = {
-  formSelector: '.popup__content',
-  inputSelector: '.popup__item',
-  submitButtonSelector: '.popup__button',
-  inactiveButtonClass: 'popup__button_disabled',// засеривание кнопки
-  inputErrorClass: 'popup__item_type_error',//подчеркивание поля ввода
-  errorClass: 'popup__error_visible' // видимость ошибки
-};
-
-// ощбщая фуекция открытия попапа
-function openPopup (popup) {
-  resetFormState(popup, config)
-  popup.classList.add('popup_visible');
-  enableEscListener()
-};
-// общая функция закрытия попапа
-function closePopup (popup) {
-  popup.classList.remove('popup_visible');
-  document.removeEventListener('keyup', handleEscListener)
-};
 // функция отправки формы
 function formSubmitHandler(evt){
   evt.preventDefault();
@@ -139,8 +120,8 @@ popupImageClose.addEventListener('click', function() {
 //функция отправки формы карточки
 function formSubmitCards(evt){
   evt.preventDefault();
-  const cardElement = createCard({name: popupCardsItemPlace.value , link: popupCardsItemLink.value})
-  cardsContainer.prepend(cardElement);
+  const cardElement = new Card({name: popupCardsItemPlace.value , link: popupCardsItemLink.value})
+  cardsContainer.prepend(cardElement.render());
   closePopup(popupCards);
   cardForm.reset();
 };
@@ -157,23 +138,3 @@ popupArray.forEach((popupNew) => {
     } 
   })
 });
-
-//навешиваем слушатель кнопки Esc на документ
-function enableEscListener() {
-  document.addEventListener('keyup', handleEscListener);
-}
-// определяем что это нужное событие
-function handleEscListener (e) {
-  e.preventDefault();
-  isEscEvt(e, closePopup);
-}
-
-//при нужном событии активный попап передается в функцию закрытия попапа
-function isEscEvt(e, action) {
-  if (e.key === 'Escape') {
-  const popupActiv = document.querySelector('.popup_visible');
-  action(popupActiv);
-  }
-}
-
-// подготовка формы 
