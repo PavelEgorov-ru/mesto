@@ -1,4 +1,4 @@
-import {openPopup} from "./utilits.js";
+import {openPopup} from "./Utilit.js";
 
 export class Card {
   constructor (card) {

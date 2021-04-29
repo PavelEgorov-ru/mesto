@@ -1,10 +1,10 @@
-import {config} from './config.js'
+import {config} from './Config.js'
 
 // ощбщая фуекция открытия попапа
 export function openPopup (popup) {
-  resetFormState(popup, config)
+  // resetFormState(popup, config)
   popup.classList.add('popup_visible');
-  enableEscListener()
+  enableEscListener(config)
 };
 
 

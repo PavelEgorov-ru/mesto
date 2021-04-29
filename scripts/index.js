@@ -1,6 +1,7 @@
-import {Card} from './card.js'
-import {openPopup, closePopup} from './utilits.js'
-import {config} from './config.js'
+import {Card} from './Card.js'
+import {openPopup, closePopup} from './Utilit.js'
+import {config} from './Config.js'
+import {FormValidator} from './FormValidator.js'
 
 // попапы
 const popupProfile = document.querySelector('.popup_profile');
@@ -33,6 +34,8 @@ const popupCardsItemLink = popupCards.querySelector('.popup__item_el_link');
 // форма 
 const cardForm = document.querySelector('.popup__content_card');
 const profileForm = document.querySelector('.popup__content_profile');
+
+const validator1 = new FormValidator(config)
 
 // массив карточек 
 const initialCards = [
@@ -74,6 +77,8 @@ profileEditBtn.addEventListener('click', function() {
   popupProfileInputName.value = popupProfileEditName.textContent;
   popupProfileInputText.value = popupProfileEditText.textContent;
   openPopup(popupProfile);
+  const validatorProfile = new FormValidator(config, popupProfile);
+  validatorProfile.enableValidation();
 });
 
 //... закрытия попапа профиля
@@ -87,9 +92,13 @@ profileForm.addEventListener('submit', formSubmitHandler);
 // ... открытя формы карточки
 cardsEditBtn.addEventListener('click', function() {
   openPopup(popupCards);
-  const button = popupCards.querySelector(config.submitButtonSelector);
-  const inputs = Array.from(popupCards.querySelectorAll(config.inputSelector))
-  toggleButtonState(button, config, inputs);
+  const validatorProfile = new FormValidator(config, popupCards);
+  validatorProfile.enableValidation();
+  // const FormValidator = new FormValidator
+  // FormValidator.enableValidation(config, popupCards)
+  // const button = popupCards.querySelector(config.submitButtonSelector);
+  // const inputs = Array.from(popupCards.querySelectorAll(config.inputSelector))
+  // toggleButtonState(button, config, inputs);
 });
 
 // ... закрытия формы карточки
@@ -107,8 +116,8 @@ initialCards.forEach( function(item) {
   cardsContainer.append(cardElement.render());
 });
 
-const popupImageLink = popupAddImage.querySelector('.popup__image');
-const popupImageCaption = popupAddImage.querySelector('.popup__figcaption');
+// const popupImageLink = popupAddImage.querySelector('.popup__image');
+// const popupImageCaption = popupAddImage.querySelector('.popup__figcaption');
 const popupImageClose = popupAddImage.querySelector('.popup__close-icon-add');
 
 
