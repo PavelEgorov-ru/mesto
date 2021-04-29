@@ -104,6 +104,7 @@ cardsEditBtn.addEventListener('click', function() {
 // ... закрытия формы карточки
 popupCardsCloseBtn.addEventListener('click', function() {
   closePopup(popupCards);
+  cardForm.reset()
 });
 
 // переменная общей секции с карточками
@@ -119,45 +120,6 @@ initialCards.forEach( function(item) {
 // const popupImageCaption = popupAddImage.querySelector('.popup__figcaption');
 const popupImageClose = popupAddImage.querySelector('.popup__close-icon-add');
 
-
-// функция создания карточки
-function createCard (item) {
-  const cardsTemplate = document.querySelector('.template-cards').content;
-  const cardsTemplateClone = cardsTemplate.cloneNode(true);
-  const cardsElement = cardsTemplateClone.querySelector('.cards__element');
-  const cardsText = cardsElement.querySelector('.cards__text');
-  const cardsImage = cardsElement.querySelector('.cards__image');
-  const backet = cardsTemplateClone.querySelector('.cards__delete-icon');
-  cardsImage.src = item.link;
-  cardsText.textContent = item.name;
-  cardsImage.alt = item.name;
- 
- // кнопка удаления карточки 
-      function deleteCard(){
-        cardsElement.remove();
-      };
- // функция открытия попапа с текущей карточкой
-      function openPopupImg () {
-        popupImageLink.src = item.link;
-        popupImageCaption.textContent = item.name;
-        openPopup(popupAddImage);
-      };
-
-  const likeElement = cardsElement.querySelector('.cards__button-like');
-      function like () {
-        likeElement.classList.toggle('cards__button-like-active');
-      };
-
-     likeElement.addEventListener('click', like);
- // слушатель открытия попапа по картинке
-     cardsElement.querySelector('.cards__image').addEventListener('click', openPopupImg);
-     
-     
- // удадение карточки через корзину     
-     backet.addEventListener('click', deleteCard);
-
-   return cardsElement;
-};
 
 // слушатель закрытия попапа с картинкой
 popupImageClose.addEventListener('click', function() {
