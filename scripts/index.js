@@ -65,7 +65,7 @@ const initialCards = [
   }
 ];
 
-// функция отправки формы
+// функция отправки формы //
 function formSubmitHandler(evt){
   evt.preventDefault();
   popupProfileEditName.textContent = popupProfileInputName.value;
