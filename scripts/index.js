@@ -1,3 +1,8 @@
+import {Card} from './Card.js'
+import {openPopup, closePopup} from './Utilit.js'
+import {config} from './Config.js'
+import {FormValidator} from './FormValidator.js'
+
 // попапы
 const popupProfile = document.querySelector('.popup_profile');
 const popupCards = document.querySelector('.popup_cards');
@@ -30,6 +35,8 @@ const popupCardsItemLink = popupCards.querySelector('.popup__item_el_link');
 const cardForm = document.querySelector('.popup__content_card');
 const profileForm = document.querySelector('.popup__content_profile');
 
+const validator1 = new FormValidator(config)
+
 // массив карточек 
 const initialCards = [
   {
@@ -58,27 +65,6 @@ const initialCards = [
   }
 ];
 
-// переменная с объектом классов и сеоекторов
-const config = {
-  formSelector: '.popup__content',
-  inputSelector: '.popup__item',
-  submitButtonSelector: '.popup__button',
-  inactiveButtonClass: 'popup__button_disabled',// засеривание кнопки
-  inputErrorClass: 'popup__item_type_error',//подчеркивание поля ввода
-  errorClass: 'popup__error_visible' // видимость ошибки
-};
-
-// ощбщая фуекция открытия попапа
-function openPopup (popup) {
-  resetFormState(popup, config)
-  popup.classList.add('popup_visible');
-  enableEscListener()
-};
-// общая функция закрытия попапа
-function closePopup (popup) {
-  popup.classList.remove('popup_visible');
-  document.removeEventListener('keyup', handleEscListener)
-};
 // функция отправки формы
 function formSubmitHandler(evt){
   evt.preventDefault();
@@ -91,6 +77,8 @@ profileEditBtn.addEventListener('click', function() {
   popupProfileInputName.value = popupProfileEditName.textContent;
   popupProfileInputText.value = popupProfileEditText.textContent;
   openPopup(popupProfile);
+  const validatorProfile = new FormValidator(config, popupProfile);
+  validatorProfile.enableValidation();
 });
 
 //... закрытия попапа профиля
@@ -104,9 +92,13 @@ profileForm.addEventListener('submit', formSubmitHandler);
 // ... открытя формы карточки
 cardsEditBtn.addEventListener('click', function() {
   openPopup(popupCards);
-  const button = popupCards.querySelector(config.submitButtonSelector);
-  const inputs = Array.from(popupCards.querySelectorAll(config.inputSelector))
-  toggleButtonState(button, config, inputs);
+  const validatorProfile = new FormValidator(config, popupCards);
+  validatorProfile.enableValidation();
+  // const FormValidator = new FormValidator
+  // FormValidator.enableValidation(config, popupCards)
+  // const button = popupCards.querySelector(config.submitButtonSelector);
+  // const inputs = Array.from(popupCards.querySelectorAll(config.inputSelector))
+  // toggleButtonState(button, config, inputs);
 });
 
 // ... закрытия формы карточки
@@ -119,12 +111,12 @@ const cardsContainer = document.querySelector('.cards');
 
 // обходчик карточек при загрузке
 initialCards.forEach( function(item) {  
-  const cardElement = createCard(item);
-  cardsContainer.append(cardElement);
+  const cardElement = new Card(item)
+  cardsContainer.append(cardElement.render());
 });
 
-const popupImageLink = popupAddImage.querySelector('.popup__image');
-const popupImageCaption = popupAddImage.querySelector('.popup__figcaption');
+// const popupImageLink = popupAddImage.querySelector('.popup__image');
+// const popupImageCaption = popupAddImage.querySelector('.popup__figcaption');
 const popupImageClose = popupAddImage.querySelector('.popup__close-icon-add');
 
 
@@ -175,8 +167,8 @@ popupImageClose.addEventListener('click', function() {
 //функция отправки формы карточки
 function formSubmitCards(evt){
   evt.preventDefault();
-  const cardElement = createCard({name: popupCardsItemPlace.value , link: popupCardsItemLink.value})
-  cardsContainer.prepend(cardElement);
+  const cardElement = new Card({name: popupCardsItemPlace.value , link: popupCardsItemLink.value})
+  cardsContainer.prepend(cardElement.render());
   closePopup(popupCards);
   cardForm.reset();
 };
@@ -193,23 +185,3 @@ popupArray.forEach((popupNew) => {
     } 
   })
 });
-
-//навешиваем слушатель кнопки Esc на документ
-function enableEscListener() {
-  document.addEventListener('keyup', handleEscListener);
-}
-// определяем что это нужное событие
-function handleEscListener (e) {
-  e.preventDefault();
-  isEscEvt(e, closePopup);
-}
-
-//при нужном событии активный попап передается в функцию закрытия попапа
-function isEscEvt(e, action) {
-  if (e.key === 'Escape') {
-  const popupActiv = document.querySelector('.popup_visible');
-  action(popupActiv);
-  }
-}
-
-// подготовка формы 
