@@ -69,6 +69,7 @@ export class FormValidator {
     inputError.classList.add(this._errorClass);
   }
   // сбрасываем ошибки инпутов при повторном открытии.
+  // пришлось ее сделать и обратится к ней при открытии формы карточки и профиля для сброса предыдущих ошибок
   resetFormState() {
     const inputList = Array.from(this._popup.querySelectorAll(this._inputSelector));
     inputList.forEach (inputElement => {
