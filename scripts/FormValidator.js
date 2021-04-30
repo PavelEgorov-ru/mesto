@@ -1,101 +1,98 @@
 export class FormValidator {
   constructor(config, popup) {
-    this.formSelector = config.formSelector;
-    this.inputSelector = config.inputSelector;
-    this.submitButtonSelector = config.submitButtonSelector;
-    this.inactiveButtonClass = config.inactiveButtonClass;
-    this.inputErrorClass = config.inputErrorClass;
-    this.errorClass = config.errorClass
-    this.popup = popup
+    this._formSelector = config.formSelector;
+    this._inputSelector = config.inputSelector;
+    this._submitButtonSelector = config.submitButtonSelector;
+    this._inactiveButtonClass = config.inactiveButtonClass;
+    this._inputErrorClass = config.inputErrorClass;
+    this._errorClass = config.errorClass;
+    this._popup = popup;
   }
 
   // находим все формы в массив
   enableValidation() {
-    // const forms = Array.from(document.querySelectorAll(this.formSelector));
-    // forms.forEach(form => {
-    //   this.form = form
-    //   this.makeSubmitEvtListener();
-    //   this.setInputListener()
-    // })
-
-    this.form = this.popup.querySelector(this.formSelector)
-    this.makeSubmitEvtListener();
-    this.setInputListener()
+    this._form = this._popup.querySelector(this._formSelector)
+    this._makeSubmitEvtListener();
+    this._setInputListener()
   }
 
   // навешиваем слушатели на запрет отправки формы
-  makeSubmitEvtListener() {
-    this.form.addEventListener('submit', this.preventSubmitForm)
+  _makeSubmitEvtListener() {
+    this._form.addEventListener('submit', this._preventSubmitForm)
   }
 
   // отменяем отправку формы
-  preventSubmitForm() {
+  _preventSubmitForm() {
     e.preventDefault();
   }
 
   // находим все поля ввода
-  setInputListener() {
-    this.inputs = Array.from(this.form.querySelectorAll(this.inputSelector));
-    // this.input = this.form.querySelector(this.inputSelector)
-    this.button = this.form.querySelector(this.submitButtonSelector);
-    // this.makeInputEvtListener()
-    this.inputs.forEach(input => {
-       this.input = input;
-       this.makeInputEvtListener()
+  _setInputListener() {
+    this._inputs = Array.from(this._form.querySelectorAll(this._inputSelector));
+    this._button = this._form.querySelector(this._submitButtonSelector);
+    this._inputs.forEach(input => {
+       this._makeInputEvtListener(input)
        })
-  
   }
 
   // навешиваем слушатель на каждый ввод в инпут
-  makeInputEvtListener() {
-    this.input.addEventListener('input', e => {
-      this.inputValidity();
+  _makeInputEvtListener(input) {
+    input.addEventListener('input', e => {
+      this._inputValidity(input);
       //определяет состояние кнопки
-      this.toggleButtonState();
+      this._toggleButtonState();
     })
   }
 
   // Опеределяем удалять текст об ошибке и подчеркивание или нет
-  inputValidity() {
-    if (this.input.validity.valid) {
-      this.showInputError()
+  _inputValidity(input) {
+    if (input.validity.valid) {
+      this._showInputError(input)
     } else {
-      this.hideInputError()
+      this._hideInputError(input)
     }
   }
 
   // удаление текста об ошибке
-  showInputError() {
-    const inputError = this.form.querySelector(`#${this.input.id}--error`);
-    this.input.classList.remove(this.inputErrorClass);
+  _showInputError(input) {
+    const inputError = this._form.querySelector(`#${input.id}--error`);
+    input.classList.remove(this._inputErrorClass);
     inputError.textContent = '';
-    inputError.classList.remove(this.errorClass)
+    inputError.classList.remove(this._errorClass)
   }
 
   // добавление текста об ошибке
-  hideInputError() {
-    const inputError = this.form.querySelector(`#${this.input.id}--error`);
-    this.input.classList.add(this.inputErrorClass);
-    inputError.textContent = this.input.validationMessage;
-    inputError.classList.add(this.errorClass);
+  _hideInputError(input) {
+    const inputError = this._form.querySelector(`#${input.id}--error`);
+    input.classList.add(this._inputErrorClass);
+    inputError.textContent = input.validationMessage;
+    inputError.classList.add(this._errorClass);
   }
+  // сбрасываем ошибки инпутов при повторном открытии.
+  resetFormState() {
+    const inputList = Array.from(this._popup.querySelectorAll(this._inputSelector));
+    inputList.forEach (inputElement => {
+      this._showInputError(inputElement)
+    })
+
+}
 
   // определяем состояние кнопки в зависимости от валидности инпутов
-  toggleButtonState() {
-    if (!hasInvalidInputs(this.inputs)) {
-      this.button.classList.add(this.inactiveButtonClass);
-      this.button.disabled = true;
+  _toggleButtonState() {
+    if (!this._hasInvalidInputs()) {
+      this._button.classList.add(this._inactiveButtonClass);
+      this._button.disabled = true;
     } else {
-      this.button.classList.remove(this.inactiveButtonClass);
-      this.button.disabled = false;
+      this._button.classList.remove(this._inactiveButtonClass);
+      this._button.disabled = false;
     }
   }
 
   // проверяем валидность инпутов
-  hasInvalidInputs() {
-  return this.inputs.every(input => {input.validity.valid})
+  _hasInvalidInputs() {
+    const result = this._inputs.every(input => input.validity.valid)
+    return result
   }
 
-  // сбрасываем ошибки инпутов при повторном открытии.
-  resetFormState() {}
+  
 }
