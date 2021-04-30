@@ -15,8 +15,8 @@
 @import url('./../blocks/popup/__item/_el/popup__item_el_comment.css');
 @import url('./../blocks/popup/__button/popup__button.css');
 @import url('./../blocks/popup/__button/_disabled/popup__button_disabled.css');
-@import url('./../blocks/popup/__error/_input/popup__error_input.css');
-@import url('./../blocks/popup/__error/_visible/popup__error_visible.css');
+@import url('./../blocks/popup/__error-input/popup__error-input.css');
+@import url('./../blocks/popup/__error-visible/popup__error-visible.css');
 @import url('./../blocks/page/__container/page__container.css');
 @import url('./../blocks/popup/__figure/popup__figure.css');
 @import url('./../blocks/popup/__image/popup__image.css');

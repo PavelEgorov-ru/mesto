@@ -4,5 +4,5 @@ export const config = {
   submitButtonSelector: '.popup__button',
   inactiveButtonClass: 'popup__button_disabled',// засеривание кнопки
   inputErrorClass: 'popup__item_type_error',//подчеркивание поля ввода
-  errorClass: 'popup__error_visible' // видимость ошибки
+  errorClass: 'popup__error-visible' // видимость ошибки
 };
