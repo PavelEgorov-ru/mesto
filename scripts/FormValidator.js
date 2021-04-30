@@ -22,7 +22,7 @@ export class FormValidator {
   }
 
   // отменяем отправку формы
-  _preventSubmitForm() {
+  _preventSubmitForm(e) {
     e.preventDefault();
   }
 
