@@ -1,4 +1,12 @@
+
 import {openPopup} from "./Utilit.js";
+
+// нашел их здесь, т.к сказали, что с индекса импортировать лучше ничего нен надо.
+const popupAddImage = document.querySelector('.popup_add-image');
+const popupImageLink = document.querySelector('.popup__image');
+const popupImageCaption = document.querySelector('.popup__figcaption');
+
+
 
 export class Card {
   constructor (card, templateSelector) {
@@ -7,6 +15,7 @@ export class Card {
     this._cardElement = this._makeElement();
     this._likeElement = this._cardElement.querySelector('.cards__button-like');
     this._backet = this._cardElement.querySelector('.cards__delete-icon');
+
     this._makeEventListener()
 
     }
@@ -41,10 +50,7 @@ export class Card {
     }
 
     // //превью карточки
-    _preview() {
-      const popupAddImage = document.querySelector('.popup_add-image');
-      const popupImageLink = popupAddImage.querySelector('.popup__image');
-      const popupImageCaption = popupAddImage.querySelector('.popup__figcaption');
+    _preview () {
       popupImageLink.src = this._card.link;
       popupImageCaption.textContent = this._card.name;
       openPopup(popupAddImage)

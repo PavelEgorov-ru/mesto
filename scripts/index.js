@@ -43,6 +43,7 @@ const popupImageClose = popupAddImage.querySelector('.popup__close-icon-add');
 
 
 
+
 // массив карточек 
 const initialCards = [
   {
@@ -74,7 +75,7 @@ const initialCards = [
 
 
 // функция отправки формы //
-function formSubmitHandler(evt){
+function sendFormSubmitProfile(evt){
   evt.preventDefault();
   popupProfileEditName.textContent = popupProfileInputName.value;
   popupProfileEditText.textContent = popupProfileInputText.value;
@@ -94,7 +95,7 @@ popupProfileCloseBtn.addEventListener('click', function() {
 });
 
 // ...отправки формы профиля
-profileForm.addEventListener('submit', formSubmitHandler);
+profileForm.addEventListener('submit', sendFormSubmitProfile);
 
 // ... открытя формы карточки
 cardsEditBtn.addEventListener('click', function() {
@@ -108,12 +109,16 @@ popupCardsCloseBtn.addEventListener('click', function() {
   cardForm.reset()
 });
 
-
-// обходчик карточек при загрузке
-initialCards.forEach( function(item) {  
-  const cardElement = new Card(item, '#template')
-  cardsContainer.append(cardElement.render());
+// обходчик для создания карточек
+initialCards.forEach( item => { 
+  cardsContainer.append(creatCard(item));
 });
+
+// функция создания карточек
+function creatCard(item) {
+  const cardElement = new Card(item, '#template');
+  return cardElement.render();
+}
 
 // слушатель закрытия попапа с картинкой
 popupImageClose.addEventListener('click', function() {
@@ -121,7 +126,7 @@ popupImageClose.addEventListener('click', function() {
 });
 
 //функция отправки формы карточки
-function formSubmitCards(evt){
+function sendFormSubmitCards(evt){
   evt.preventDefault();
   const cardElement = new Card({name: popupCardsItemPlace.value , link: popupCardsItemLink.value}, '#template')
   cardsContainer.prepend(cardElement.render());
@@ -130,7 +135,7 @@ function formSubmitCards(evt){
 };
 
 //слушатель отправки формы карточки
-cardForm.addEventListener('submit', formSubmitCards);
+cardForm.addEventListener('submit', sendFormSubmitCards);
 
 //обходчик по массивам, навешивает слушатели на оверлей
 popupArray.forEach((popupNew) => {
@@ -143,8 +148,8 @@ popupArray.forEach((popupNew) => {
 });
 
 // создание валидаторов для каждой формы
-const validatorProfile = new FormValidator(config, popupProfile);
+const validatorProfile = new FormValidator(config, profileForm);
 validatorProfile.enableValidation();
 
-const validatorCard = new FormValidator(config, popupCards);
+const validatorCard = new FormValidator(config, cardForm);
 validatorCard.enableValidation();
