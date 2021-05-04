@@ -70,7 +70,6 @@ export class FormValidator {
   // сбрасываем ошибки инпутов при повторном открытии.
   // пришлось ее сделать и обратится к ней при открытии формы карточки и профиля для сброса предыдущих ошибок
   resetFormState() {
-    // const inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector));
     this._inputs.forEach (inputElement => {
       this._hideInputError(inputElement)
     })

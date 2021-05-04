@@ -128,8 +128,8 @@ popupImageClose.addEventListener('click', function() {
 //функция отправки формы карточки
 function sendFormSubmitCards(evt){
   evt.preventDefault();
-  const cardElement = new Card({name: popupCardsItemPlace.value , link: popupCardsItemLink.value}, '#template')
-  cardsContainer.prepend(cardElement.render());
+  const cardElement = creatCard({name: popupCardsItemPlace.value , link: popupCardsItemLink.value}, '#template') 
+  cardsContainer.prepend(cardElement);
   closePopup(popupCards);
   cardForm.reset();
 };
