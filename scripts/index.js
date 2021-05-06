@@ -1,6 +1,6 @@
 import {Card} from './Сard.js';
 import {openPopup, closePopup} from './Utilit.js';
-import {config} from './Config.js';
+import {config} from './config.js';
 import {FormValidator} from './FormValidator.js';
 
 // попапы

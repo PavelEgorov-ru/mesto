@@ -1,4 +1,4 @@
-import {config} from './Config.js'
+import {config} from './config.js'
 
 // ощбщая фуекция открытия попапа
 export function openPopup (popup) {
