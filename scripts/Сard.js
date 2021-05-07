@@ -1,7 +1,7 @@
 
 import {openPopup} from "./Utilit.js";
 
-// нашел их здесь, т.к сказали, что с индекса импортировать лучше ничего нен надо.
+// нашел их здесь, т.к сказали, что с индекса импортировать лучше ничего не надо.
 const popupAddImage = document.querySelector('.popup_add-image');
 const popupImageLink = document.querySelector('.popup__image');
 const popupImageCaption = document.querySelector('.popup__figcaption');
