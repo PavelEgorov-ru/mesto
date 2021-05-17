@@ -13,11 +13,11 @@
         <div class="popup__close-icon opacity popup__close-icon-profile">+</div>
         <h2 class="popup__title">Редактировать профиль</h2>
         <div class="popup__item-container">
-          <input type="text" class="popup__item popup__item_el_name"  placeholder="имя" id="input-name" minlength ="2" maxlength = "40" required>
+          <input type="text" name="name" class="popup__item popup__item_el_name"  placeholder="имя" id="input-name" minlength ="2" maxlength = "40" required>
           <span class="popup__error-input" id="input-name--error"></span>
         </div>
         <div class="popup__item-container">
-          <input type="text" class="popup__item popup__item_el_comment"  placeholder="o себе" id="input-comment" minlength ="2" maxlength = "200" required>
+          <input type="text" name="link" class="popup__item popup__item_el_comment"  placeholder="o себе" id="input-comment" minlength ="2" maxlength = "200" required>
           <span class="popup__error-input" id="input-comment--error"></span>
         </div>        
         <button type="submit" class="popup__button" disabled> Сохранить </button>
@@ -29,11 +29,11 @@
         <div class="popup__close-icon opacity popup__close-icon-cards">+</div>
         <h2 class="popup__title">Новое место</h2>
         <div class="popup__item-container">
-          <input type="text" class="popup__item popup__item_el_place"  placeholder="название" id="input-place" minlength ="2" maxlength = "30" required>
+          <input type="text" name="name" class="popup__item popup__item_el_place"  placeholder="название" id="input-place" minlength ="2" maxlength = "30" required>
           <span class="popup__error-input" id="input-place--error"></span>
         </div>        
         <div class="popup__item-container">
-          <input type="url" class="popup__item popup__item_el_link" id="input-link"  placeholder="ссылка на картинку" required>
+          <input type="url" name="link" class="popup__item popup__item_el_link" id="input-link"  placeholder="ссылка на картинку" required>
           <span class="popup__error-input" id="input-link--error"></span>
         </div>
         <button type="submit" class="popup__button"> Сoхранить </button>
@@ -43,7 +43,7 @@
       <div class="popup__overlay">
         <figure class="popup__figure ">
           <div class="popup__close-icon opacity popup__close-icon-add">+</div>
-          <img src="#" alt = "#" class=" popup__image">
+          <img src="#" alt = "#" class="popup__image">
           <figcaption class="popup__figcaption"></figcaption>
         </figure>
       </div>
@@ -83,6 +83,7 @@
         </div>         
       </article>
     </template>
-    <script type = "module" src="./scripts/index.js"></script>
+    <script type = "module" src="./scripts/pages/index.js"></script>
   </body>
 </html>
+

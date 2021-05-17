@@ -1,23 +1,13 @@
 
-import {openPopup} from "./Utilit.js";
-
-// нашел их здесь, т.к сказали, что с индекса импортировать лучше ничего не надо.
-const popupAddImage = document.querySelector('.popup_add-image');
-const popupImageLink = document.querySelector('.popup__image');
-const popupImageCaption = document.querySelector('.popup__figcaption');
-
-
-
-export class Card {
-  constructor (card, templateSelector) {
+export default class Card {
+  constructor (card, templateSelector, handleCardClick) {
     this._card = card;
-    this._templateSelector = templateSelector
+    this._templateSelector = templateSelector;
+    this._handleCardClick = handleCardClick;
     this._cardElement = this._makeElement();
     this._likeElement = this._cardElement.querySelector('.cards__button-like');
     this._backet = this._cardElement.querySelector('.cards__delete-icon');
-
     this._makeEventListener()
-
     }
     //создание элемента
     _makeElement() {
@@ -35,8 +25,8 @@ export class Card {
     //создание слушателей
     _makeEventListener() {
       this._likeElement.addEventListener('click', () => this._like());
-      this._backet.addEventListener('click', () => this._deleteCard())
-      this._cardElementImage.addEventListener('click', () => this._preview())
+      this._backet.addEventListener('click', () => this._deleteCard());
+      this._cardElementImage.addEventListener('click', () => this._preview());
     }
 
     // //удаление карточки
@@ -49,11 +39,9 @@ export class Card {
       this._likeElement.classList.toggle('cards__button-like-active');
     }
 
-    // //превью карточки
+    //превью карточки
     _preview () {
-      popupImageLink.src = this._card.link;
-      popupImageCaption.textContent = this._card.name;
-      openPopup(popupAddImage)
+      this._handleCardClick(this._card);
     };
 
      render() {

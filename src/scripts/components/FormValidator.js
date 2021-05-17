@@ -1,4 +1,4 @@
-export class FormValidator {
+export default class FormValidator {
   constructor(config, form) {
     this._formSelector = config.formSelector;
     this._inputSelector = config.inputSelector;
@@ -91,7 +91,5 @@ export class FormValidator {
   _hasInvalidInputs() {
     const result = this._inputs.every(input => input.validity.valid)
     return result
-  }
-
-  
+  }  
 }
