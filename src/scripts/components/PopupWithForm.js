@@ -23,7 +23,6 @@ export default class PopupWithForm extends Popup {
       this.submitHandler(this._getInputValues())
       this.close();
       this.form.reset();
-      
     });
   }
 
