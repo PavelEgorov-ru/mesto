@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./pages/index.css">
+    <!-- <link rel="stylesheet" href="./pages/index.css"> -->
     <title>Место-Россия</title>
   </head>
   <body class="page">
@@ -50,21 +50,21 @@
     </div>
     <div class="page__container">
       <div class="header section section_size_narrow">
-        <img src="./images/Vector.svg" alt="логотип место Россия" class="logo">
+        <img src="<%=require('./images/Vector.svg')%>" alt="логотип место Россия" class="logo">
       </div>
       <main class="content section section_size_wide">
         <section class="profile section section_size_wide">
           <div class="profile__info">
-            <img src="./images/image_avatar.jpg" alt="фотография Жак-Ив Кусто" class="profile__avatar">
+            <img src="<%=require('./images/image_avatar.jpg')%>" alt="фотография Жак-Ив Кусто" class="profile__avatar">
             <article class="profile__texts">
               <div class="profile__rows">
                 <h1 class="profile__title">Жак-Ив Кусто</h1>
-                <img src="./images/Vector_pen.svg" alt="иконка редактирования профиля" class="profile__edit-button opacity">
+                <img src="<%=require('./images/Vector_pen.svg')%>" alt="иконка редактирования профиля" class="profile__edit-button opacity">
               </div>
               <h2 class="profile__subtitle">Исследователь океана</h2>
             </article>
           </div>
-          <img src="./images/Vector_plus.svg" alt="добавить карточку" class="profile__button profile__button-card opacity">
+          <img src="<%=require('./images/Vector_plus.svg')%>" alt="добавить карточку" class="profile__button profile__button-card opacity">
         </section>
         <section class="cards section section_size_wide">
         </section>
@@ -75,7 +75,7 @@
     </div>
     <template class = "template-cards" id = "template">
       <article class="cards__element">
-        <img src="./images/Group2.png" alt="кнопка удалить" class="cards__delete-icon opacity">
+        <img src="<%=require('./images/Group2.png')%>" alt="кнопка удалить" class="cards__delete-icon opacity">
         <img class="cards__image">
         <div class="cards__content">
           <p class="cards__text"></p>
@@ -83,7 +83,7 @@
         </div>         
       </article>
     </template>
-    <script type = "module" src="./scripts/pages/index.js"></script>
+    <!-- <script type = "module" src="./scripts/pages/index.js"></script> -->
   </body>
 </html>
 
