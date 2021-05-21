@@ -40,12 +40,10 @@ profileEditBtn.addEventListener('click', () => {
 const sectionCard = new Section({
   data: initialCards,
     rendererItem: (data) => {
-      data.forEach((item) => {
-        const card = creatCard(item)
-        return sectionCard.addItem(card)
-      })
-    }
-}, '.cards');
+      const card = creatCard(data)
+      return card
+      }
+    }, '.cards');
 
 sectionCard.renderer();
 
@@ -73,16 +71,11 @@ function handleCardClick (data) {
   return popupImage.open(data);
 };
 
-function submitHandlerCard(values) {
-  const sectionCard = new Section({
-    data: values, 
-    rendererItem: (values) => {
-      const card = creatCard(values)
-      return sectionCard.addItem(card)
-    }
-  }, '.cards');
-  return sectionCard.renderer();
-};
+
+function submitHandlerCard(data) {
+  const newCard = creatCard(data);
+  sectionCard.addItem(newCard);
+}
 
 function submitHandlerProfile(values) {
   userInfo.setUserInfo(values);
