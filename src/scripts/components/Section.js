@@ -9,10 +9,9 @@ export default class Section {
   }
 // метод обходит карточки и вызывает метод добавления в разметку
   renderer() {
-    this.dataArray.forEach( item => {
-      this.containerSection.append(this.rendererItem(item))
-    });
-  }
+    this.dataArray.reverse().forEach( item => this.rendererItem(item))
+  };
+ 
 // метод добавления карточки через форму
   addItem(element) {
     this.containerSection.prepend(element);

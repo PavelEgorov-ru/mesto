@@ -34,18 +34,18 @@ popupEditProfile.setEventListeners();
 profileEditBtn.addEventListener('click', () => {
   editHadlerProfile();
   popupEditProfile.open();
-  validatorCard.resetFormState();
+  validatorProfile.resetFormState();
 });
 
 const sectionCard = new Section({
   data: initialCards,
     rendererItem: (data) => {
-      const card = creatCard(data)
-      return card
-      }
-    }, '.cards');
-
-sectionCard.renderer();
+      const card = creatCard(data);
+      sectionCard.addItem(card)
+    }
+}, '.cards');
+    
+sectionCard.renderer()
 
 // создание валидаторов для каждой формы
 const validatorProfile = new FormValidator(config, profileForm);

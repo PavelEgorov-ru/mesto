@@ -10,8 +10,8 @@ export default class Popup {
 
   open() {
     this.popup.classList.add('popup_visible');
-    document.addEventListener('keyup',(evt) => this._handleEscClose(evt))
-    this.overlay.addEventListener('click', (evt) => this._handleOvlClose(evt))
+    document.addEventListener('keyup', this._handleEscClose)
+    
     
     
   }
@@ -19,7 +19,7 @@ export default class Popup {
   close() {
     this.popup.classList.remove('popup_visible');
     document.removeEventListener('keyup', this._handleEscClose)
-    this.overlay.removeEventListener('click', this._handleOvlClose)
+    
   }
 
   _handleEscClose(evt) {
@@ -36,9 +36,8 @@ export default class Popup {
   }
 
   setEventListeners() {
-    this.popup.querySelector('.popup__close-icon').addEventListener('click', () => {
-      this.close()
-    })
+    this.popup.querySelector('.popup__close-icon').addEventListener('click', this.close)      
+    this.overlay.addEventListener('click', this._handleOvlClose)
     
   }
 }
