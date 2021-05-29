@@ -1,11 +1,14 @@
 
 export default class Card {
-  constructor (card, templateSelector, handleCardClick) {
+  constructor (card, templateSelector, handleCardClick, likeSelector) {
     this._card = card;
+    // this._likeSelector = likeSelector;
+    // this._nuberLikeElement = this._card.querySelector(this._likeSelector);
     this._templateSelector = templateSelector;
     this._handleCardClick = handleCardClick;
     this._cardElement = this._makeElement();
     this._likeElement = this._cardElement.querySelector('.cards__button-like');
+    
     this._backet = this._cardElement.querySelector('.cards__delete-icon');
     this._makeEventListener()
     }
@@ -14,11 +17,13 @@ export default class Card {
       const cardsTemplate = document.querySelector(this._templateSelector).content;
       const cardsTemplateClone = cardsTemplate.cloneNode(true);
       const cardElement = cardsTemplateClone.querySelector('.cards__element');
+      const numberLikeElement = cardElement.querySelector('.cards__number-like')
       this._cardElementName = cardElement.querySelector('.cards__text');
       this._cardElementImage = cardElement.querySelector('.cards__image');
       this._cardElementImage.src = this._card.link;
       this._cardElementImage.alt = this._card.name;
       this._cardElementName.textContent = this._card.name;
+      numberLikeElement.textContent = this._card.likes.length
       return cardElement;
     }
 

@@ -7,6 +7,7 @@
     <title>Место-Россия</title>
   </head>
   <body class="page">
+    <!-- попап редактирования профиля -->
     <div class="popup popup_profile">
       <div class="popup__overlay"></div>
       <form class="popup__content popup__content_profile">
@@ -17,12 +18,13 @@
           <span class="popup__error-input" id="input-name--error"></span>
         </div>
         <div class="popup__item-container">
-          <input type="text" name="link" class="popup__item popup__item_el_comment"  placeholder="o себе" id="input-comment" minlength ="2" maxlength = "200" required>
+          <input type="text" name="about" class="popup__item popup__item_el_comment"  placeholder="o себе" id="input-comment" minlength ="2" maxlength = "200" required>
           <span class="popup__error-input" id="input-comment--error"></span>
         </div>        
         <button type="submit" class="popup__button" disabled> Сохранить </button>
       </form>
     </div>
+    <!-- попап добавления карточки -->
     <div class="popup popup_cards">
       <div class="popup__overlay"></div>
       <form class="popup__content  popup__content_card">
@@ -39,6 +41,15 @@
         <button type="submit" class="popup__button"> Сoхранить </button>
       </form> 
     </div>
+    <div class="popup popup_delete-card">
+      <div class="popup__overlay"></div>
+      <form class="popup__content  popup__content_delete-card">
+        <div class="popup__close-icon opacity popup__close-icon-delete">+</div>
+        <h2 class="popup__title">Вы уверены?</h2>      
+        <button type="submit" class="popup__button"> Да </button>
+      </form> 
+    </div>
+    <!-- превью -->
     <div class="popup popup_add-image">
       <div class="popup__overlay">
         <figure class="popup__figure ">
@@ -58,10 +69,10 @@
             <img src="<%=require('./images/image_avatar.jpg')%>" alt="фотография Жак-Ив Кусто" class="profile__avatar">
             <article class="profile__texts">
               <div class="profile__rows">
-                <h1 class="profile__title">Жак-Ив Кусто</h1>
+                <h1 class="profile__title"></h1>
                 <img src="<%=require('./images/Vector_pen.svg')%>" alt="иконка редактирования профиля" class="profile__edit-button opacity">
               </div>
-              <h2 class="profile__subtitle">Исследователь океана</h2>
+              <h2 class="profile__subtitle"></h2>
             </article>
           </div>
           <img src="<%=require('./images/Vector_plus.svg')%>" alt="добавить карточку" class="profile__button profile__button-card opacity">
@@ -79,7 +90,10 @@
         <img class="cards__image">
         <div class="cards__content">
           <p class="cards__text"></p>
-          <div class="cards__button-like opacity"></div>
+          <div class="cards__block-like">
+            <div class="cards__button-like opacity"></div>
+            <p class="cards__number-like">0</p>
+          </div>          
         </div>         
       </article>
     </template>

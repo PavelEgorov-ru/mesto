@@ -43,9 +43,12 @@
 @import url('./../blocks/cards/__image/cards__image.css');
 @import url('./../blocks/cards/__content/cards__content.css');
 @import url('./../blocks/cards/__text/cards__text.css');
+@import url('./../blocks/cards/__block-like/cards__block-like.css');
 @import url('./../blocks/cards/__button-like/cards__button-like.css');
 @import url('./../blocks/cards/__button-like-active/cards__button-like-active.css');
+@import url('./../blocks/cards/__number-like/cards__number-like.css');
 @import url('./../blocks/footer/footer.css');
 @import url('./../blocks/footer/__copyright/footer__copyright.css');
 @import url('./../blocks/errors/errors.css');
+
 

@@ -2,15 +2,15 @@ export default class UserInfo{
   constructor(data) {
     this.data = data;   
     this.userName = document.querySelector(this.data.name);
-    this.UserCommit = document.querySelector(this.data.commit); 
+    this.UserCommit = document.querySelector(this.data.about); 
   }
 
   getUserInfo() {
-    return {name: this.userName.textContent, commit: this.UserCommit.textContent}
+    return {name: this.userName.textContent, about: this.UserCommit.textContent}
   }
 
-  setUserInfo(values) {
-    this.userName.textContent= values.name;
-    this.UserCommit.textContent = values.link;
+  setUserInfo({name, about}) {
+    this.userName.textContent= name;
+    this.UserCommit.textContent = about;
   }
 }
