@@ -4,21 +4,27 @@ export default class Api {
     this.cohort = cohort;
   }
 
-  _request(adres, metod) {
-    return fetch(`https://mesto.nomoreparties.co/v1/${this.cohort}/${adres}`,{
-        metod: metod,
-        headers: {
-         authorization: this.token,
-         'Content-Type': 'application/json',
-         }
-       })
-       .then(res => {
+  _request(adres, method, info) {
+    const pattern = {
+      method: method,
+      headers: {
+       authorization: this.token,
+       'Content-Type': 'application/json',
+       }
+     }
+     
+    return fetch(
+      `https://mesto.nomoreparties.co/v1/${this.cohort}/${adres}`,
+      info ? {...pattern, body: JSON.stringify(info)} : pattern
+      )
+      .then(res => {
         if(res.ok) {
           return res.json()
         } else {
           Promise.reject(`ошибка: ${res.status}`)
         }
-       })
+     })
+
   }
 
   newUserInfo() {
@@ -26,22 +32,15 @@ export default class Api {
   }
 
   editUserInfo(userInfo) {
-    return fetch('https://mesto.nomoreparties.co/v1/cohort-24/users/me', {
-      method: 'PATCH',
-      headers: {
-        authorization: this.token,
-        'Content-Type': 'application/json',
-        },
-      body: JSON.stringify(userInfo)
-    }
-    )
-    .then(res => {
-      if(res.ok) {
-        return res.json()
-      } else {
-        Promise.reject(`ошибка: ${res.status}`)
-      }
-     })
+    return this._request('users/me', 'PATCH', userInfo)
+  }
+
+  editAvatar(avatarInfo) {
+    return this._request('users/me/avatar', 'PATCH', avatarInfo)
+  }
+
+  getUserId() {
+    return this._request('users/me', 'GET')
   }
 
   getCards(){
@@ -49,33 +48,14 @@ export default class Api {
   }
 
   setNewCard(data) {
-    return fetch('https://mesto.nomoreparties.co/v1/cohort-24/cards', {
-      method: 'POST',
-      headers: {
-        authorization: this.token,
-        'Content-Type': 'application/json',
-        }, 
-      body: JSON.stringify({
-        name: data.name,
-        link: data.link
-      })
-    }
-    )
-    .then(res => {
-      if(res.ok) {
-        return res.json()
-      } else {
-        Promise.reject(`ошибка: ${res.status}`)
-      }
-     })
+    return this._request('cards', 'POST', data)
+  }
+
+  deleteCard(id) {
+    return this._request(`cards/${id}`, 'DELETE')
+  }
+
+  like(cardId, isLiked) {
+    return this._request(`cards/likes/${cardId}`, isLiked? 'DELETE' : 'PUT') 
   }
 }
-
-
-// {
-//   baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-24/',
-//   headers: {
-//     authorization: '17967209-61dd-4a29-b076-c48750c9d1ad',
-//     'Content-Type': 'application/json',
-//   }
-// }

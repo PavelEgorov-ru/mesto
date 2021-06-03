@@ -7,8 +7,8 @@ export default class Section {
 
   }
 // метод обходит карточки и вызывает метод добавления в разметку
-  renderer(dataArray) {
-    dataArray.reverse().forEach( item => this.rendererItem(item))
+  renderer(dataArray, userId) {
+    dataArray.reverse().forEach( item => this.rendererItem(item, userId))
   };
  
 // метод добавления карточки через форму

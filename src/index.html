@@ -3,14 +3,13 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="./pages/index.css"> -->
     <title>Место-Россия</title>
   </head>
   <body class="page">
     <!-- попап редактирования профиля -->
     <div class="popup popup_profile">
       <div class="popup__overlay"></div>
-      <form class="popup__content popup__content_profile">
+      <form class="popup__content popup__content_size-normal popup__content_profile">
         <div class="popup__close-icon opacity popup__close-icon-profile">+</div>
         <h2 class="popup__title">Редактировать профиль</h2>
         <div class="popup__item-container">
@@ -21,13 +20,13 @@
           <input type="text" name="about" class="popup__item popup__item_el_comment"  placeholder="o себе" id="input-comment" minlength ="2" maxlength = "200" required>
           <span class="popup__error-input" id="input-comment--error"></span>
         </div>        
-        <button type="submit" class="popup__button" disabled> Сохранить </button>
+        <button type="submit" class="popup__button popup__button_margin-normal" disabled> Сохранить </button>
       </form>
     </div>
     <!-- попап добавления карточки -->
     <div class="popup popup_cards">
       <div class="popup__overlay"></div>
-      <form class="popup__content  popup__content_card">
+      <form class="popup__content popup__content_size-normal popup__content_card">
         <div class="popup__close-icon opacity popup__close-icon-cards">+</div>
         <h2 class="popup__title">Новое место</h2>
         <div class="popup__item-container">
@@ -38,15 +37,29 @@
           <input type="url" name="link" class="popup__item popup__item_el_link" id="input-link"  placeholder="ссылка на картинку" required>
           <span class="popup__error-input" id="input-link--error"></span>
         </div>
-        <button type="submit" class="popup__button"> Сoхранить </button>
+        <button type="submit" class="popup__button popup__button_margin-normal"> Сoхранить </button>
       </form> 
     </div>
+    <!-- попап добавления аватара -->
+    <div class="popup popup_avatar">
+      <div class="popup__overlay"></div>
+      <form class="popup__content popup__content_size-min popup__content_avatar">
+        <div class="popup__close-icon opacity popup__close-icon-cards">+</div>
+        <h2 class="popup__title">Обновить аватар</h2>      
+        <div class="popup__item-container">
+          <input type="url" name="avatar" class="popup__item popup__item_el_link" id="input-link"  placeholder="ссылка на картинку" required>
+          <span class="popup__error-input" id="input-link--error"></span>
+        </div>
+        <button type="submit" class="popup__button popup__button_margin-none"> Сoхранить </button>
+      </form> 
+    </div>
+    <!-- попап для удаления карточки -->
     <div class="popup popup_delete-card">
       <div class="popup__overlay"></div>
-      <form class="popup__content  popup__content_delete-card">
+      <form class="popup__content popup__content_size-min popup__content_delete-card">
         <div class="popup__close-icon opacity popup__close-icon-delete">+</div>
         <h2 class="popup__title">Вы уверены?</h2>      
-        <button type="submit" class="popup__button"> Да </button>
+        <button type="submit" class="popup__button popup__button_margin-none"> Да </button>
       </form> 
     </div>
     <!-- превью -->
@@ -66,7 +79,11 @@
       <main class="content section section_size_wide">
         <section class="profile section section_size_wide">
           <div class="profile__info">
-            <img src="<%=require('./images/image_avatar.jpg')%>" alt="фотография Жак-Ив Кусто" class="profile__avatar">
+            <div class="profile__avatar">
+              <button type="button" class="profile__avatar-btn">
+                <img src="<%=require('./images/image_avatar.jpg')%>" class="profile__avatar-image">
+              </button>
+            </div>
             <article class="profile__texts">
               <div class="profile__rows">
                 <h1 class="profile__title"></h1>
@@ -86,7 +103,7 @@
     </div>
     <template class = "template-cards" id = "template">
       <article class="cards__element">
-        <img src="<%=require('./images/Group2.png')%>" alt="кнопка удалить" class="cards__delete-icon opacity">
+        <img src="<%=require('./images/Group2.png')%>" alt="кнопка удалить" class="cards__delete-icon  opacity">
         <img class="cards__image">
         <div class="cards__content">
           <p class="cards__text"></p>
@@ -97,7 +114,6 @@
         </div>         
       </article>
     </template>
-    <!-- <script type = "module" src="./scripts/pages/index.js"></script> -->
   </body>
 </html>
 

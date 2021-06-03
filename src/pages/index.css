@@ -1,11 +1,14 @@
 @import url('./../vendor/normalize.css');
 @import url('./../vendor/fonts/fonts.css');
 @import url('./../blocks/opacity/opacity.css');
+@import url('./../blocks/visibility/visibility.css');
 @import url('./../blocks/page/page.css');
 @import url('./../blocks/popup/popup.css');
 @import url('./../blocks/popup/_visible/popup_visible.css');
 @import url('./../blocks/popup/__overlay/popup__overlay.css');
 @import url('./../blocks/popup/__content/popup__content.css');
+@import url('./../blocks/popup/__content/_size/popup__content_size-normal.css');
+@import url('./../blocks/popup/__content/_size/popup__content_size-min.css');
 @import url('./../blocks/popup/__close-icon/popup__close-icon.css');
 @import url('./../blocks/popup/__title/popup__title.css');
 @import url('./../blocks/popup/__item-container/popup__item-container.css');
@@ -14,6 +17,8 @@
 @import url('./../blocks/popup/__item/_el/popup__item_el_name.css');
 @import url('./../blocks/popup/__item/_el/popup__item_el_comment.css');
 @import url('./../blocks/popup/__button/popup__button.css');
+@import url('./../blocks/popup/__button/_margin/popup__button_margin-none.css');
+@import url('./../blocks/popup/__button/_margin/popup__button_margin-normal.css');
 @import url('./../blocks/popup/__button/_disabled/popup__button_disabled.css');
 @import url('./../blocks/popup/__error-input/popup__error-input.css');
 @import url('./../blocks/popup/__error-visible/popup__error-visible.css');
@@ -30,6 +35,8 @@
 @import url('./../blocks/profile/profile.css');
 @import url('./../blocks/profile/__info/profile__info.css');
 @import url('./../blocks/profile/__avatar/profile__avatar.css');
+@import url('./../blocks/profile/__avatar-btn/profile__avatar-btn.css');
+@import url('./../blocks/profile/__avatar-image/profile__avatar-image.css');
 @import url('./../blocks/profile/__texts/profile__texts.css');
 @import url('./../blocks/profile/__rows/profile__rows.css');
 @import url('./../blocks/profile/__title/profile__title.css');
@@ -39,7 +46,7 @@
 @import url('./../blocks/profile/__button-plus/profile__button-pluse.css');
 @import url('./../blocks/cards/cards.css');
 @import url('./../blocks/cards/__element/cards__element.css');
-@import url('./../blocks/cards/__delet-icon/cards__delete-icon.css');
+@import url('./../blocks/cards/__delete-icon/cards__delete-icon.css');
 @import url('./../blocks/cards/__image/cards__image.css');
 @import url('./../blocks/cards/__content/cards__content.css');
 @import url('./../blocks/cards/__text/cards__text.css');
