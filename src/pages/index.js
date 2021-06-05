@@ -21,6 +21,7 @@ import {
 
 // создаем класс API
 const api = new Api({
+  baseUrl: 'https://mesto.nomoreparties.co/v1',
   token: '17967209-61dd-4a29-b076-c48750c9d1ad',
   cohort: 'cohort-24'
 });
@@ -31,7 +32,10 @@ Promise.all([api.newUserInfo(), api.getCards()])
 .then(([userData, cardsData]) => {
   userId = userData._id
   setUserData(userData);
-  sectionCard.renderer(cardsData, userId);
+  sectionCard.renderer(cardsData, userId)
+})
+.catch((error) => {
+  console.log(error)
 })
 
 function setUserData (userData) {
@@ -40,7 +44,7 @@ function setUserData (userData) {
 
 const sectionCard = new Section({
     rendererItem: (data) => {
-      const card = creatCard(data, userId);
+      const card = createCard(data, userId);
       sectionCard.addItem(card)
     }
 }, '.cards');
@@ -92,11 +96,11 @@ function handleCardDelet(data) {
   return popupDeletCard.open();
 }
 
-function submitDeleteCard(data) {
+function submitDeleteCard(card) {
   popupDeletCard.saveBtn(true)
-  api.deleteCard(data._card._id)
+  api.deleteCard(card.getId())
   .then(() => {
-    data._deleteCard()
+    card.deleteCard()
     popupDeletCard.close()
   })
   .catch((error) => {
@@ -126,7 +130,7 @@ function submitHandlerCard(data) {
   popupForm.saveBtn(true)
   api.setNewCard(data)
   .then((res) => {
-    const newCard = creatCard(res, userId);
+    const newCard = createCard(res, userId);
     sectionCard.addItem(newCard);
     popupForm.close()
   })
@@ -158,11 +162,14 @@ function likeCard (card) {
   .then(res => {
     card.updLikesInfo(res.likes)
   })
+  .catch((error) => {
+    console.log(error)
+  })
 }
 
 
 // функция создания карточек
-function creatCard(item, userId) {  
+function createCard(item, userId) {  
   const cardElement = new Card(item, '#template', handleCardClick, handleCardDelet, userId, likeCard);
   return cardElement.render();
 }

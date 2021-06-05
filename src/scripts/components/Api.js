@@ -1,5 +1,6 @@
 export default class Api {
-  constructor({token, cohort}) {
+  constructor({baseUrl, token, cohort}) {
+    this.baseUrl = baseUrl
     this.token = token;
     this.cohort = cohort;
   }
@@ -14,7 +15,7 @@ export default class Api {
      }
      
     return fetch(
-      `https://mesto.nomoreparties.co/v1/${this.cohort}/${adres}`,
+      `${this.baseUrl}/${this.cohort}/${adres}`,
       info ? {...pattern, body: JSON.stringify(info)} : pattern
       )
       .then(res => {

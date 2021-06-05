@@ -46,7 +46,7 @@ export default class Card {
     }
 
     //удаление карточки
-    _deleteCard() {
+    deleteCard() {
       this._cardElement.remove();
     }
 

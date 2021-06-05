@@ -1,9 +1,8 @@
 export default class Popup {
   constructor(popupSelector) {
-    this.popupSelector = popupSelector;
-    this.popup = document.querySelector(this.popupSelector);
+    this._popupSelector = popupSelector;
+    this.popup = document.querySelector(this._popupSelector);
     this.overlay = this.popup.querySelector('.popup__overlay')
-    this.popupBtn = this.popup.querySelector('.popup__button')
     this._handleEscClose = this._handleEscClose.bind(this)
     this._handleOvlClose = this._handleOvlClose.bind(this)
     this.close = this.close.bind(this)
@@ -39,13 +38,5 @@ export default class Popup {
   setEventListeners() {
     this.popup.querySelector('.popup__close-icon').addEventListener('click', this.close)      
     this.overlay.addEventListener('click', this._handleOvlClose)
-  }
-
-  saveBtn(status) {
-    if(status) {
-      this.popupBtn.textContent = 'Сохранение...'
-    } else {
-      this.popupBtn.textContent = 'Сохранить'
-    }
   }
 }
