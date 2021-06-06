@@ -2,7 +2,7 @@ export default class Card {
   constructor (card, templateSelector, handleCardClick, handleCardDelet, userId, handleLike) {
     this._card = card;
     this._userID = userId
-    this.handleLike = handleLike
+    this._handleLike = handleLike
     this._templateSelector = templateSelector;
     this._handleCardClick = handleCardClick;
     this._handleCardDelet = handleCardDelet
@@ -14,7 +14,7 @@ export default class Card {
       const cardsTemplate = document.querySelector(this._templateSelector).content;
       const cardsTemplateClone = cardsTemplate.cloneNode(true);
       const cardElement = cardsTemplateClone.querySelector('.cards__element');
-      this.numberLikeElement = cardElement.querySelector('.cards__number-like')
+      this._numberLikeElement = cardElement.querySelector('.cards__number-like')
       this._backet = cardElement.querySelector('.cards__delete-icon');
       this._likeElement = cardElement.querySelector('.cards__button-like');
       this._cardElementName = cardElement.querySelector('.cards__text');
@@ -22,7 +22,7 @@ export default class Card {
       this._cardElementImage.src = this._card.link;
       this._cardElementImage.alt = this._card.name;
       this._cardElementName.textContent = this._card.name;
-      this.numberLikeElement.textContent = this._card.likes.length
+      this._numberLikeElement.textContent = this._card.likes.length
       if (this._userID !== this._card.owner._id) {
         this._backet.classList.add('visibility')
       }
@@ -52,7 +52,7 @@ export default class Card {
 
     // // переключение лайка
     _like() {
-      this.handleLike(this)
+      this._handleLike(this)
     }
 
     //превью карточки
@@ -77,10 +77,10 @@ export default class Card {
        this._isLiked = this._card.likes.some(like =>like._id === this._userID)
        if(this._isLiked) {
         this._likeElement.classList.add('cards__button-like-active')
-        this.numberLikeElement.textContent = likes.length
+        this._numberLikeElement.textContent = likes.length
        } else {
         this._likeElement.classList.remove('cards__button-like-active')
-        this.numberLikeElement.textContent = likes.length
+        this._numberLikeElement.textContent = likes.length
        }
      }
 }

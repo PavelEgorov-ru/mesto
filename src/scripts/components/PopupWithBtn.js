@@ -4,13 +4,13 @@ export default class PopupWithBtn extends Popup {
   constructor(popupSelector, submitHandler) {
     super(popupSelector);
     this._submitHandler = submitHandler;
-    this.form = this.popup.querySelector('.popup__content');
-    this.popupBtn = this.popup.querySelector('.popup__button');
+    this._form = this._popup.querySelector('.popup__content');
+    this._popupBtn = this._popup.querySelector('.popup__button');
   }
 
   setEventListeners() {
     super.setEventListeners();
-    this.form.addEventListener('submit', (event) => {
+    this._form.addEventListener('submit', (event) => {
       event.preventDefault()
       this._submitHandler(this.data)
     });
@@ -22,9 +22,9 @@ export default class PopupWithBtn extends Popup {
 
   saveBtn(status) {
     if(status) {
-      this.popupBtn.textContent = 'Удаляется...'
+      this._popupBtn.textContent = 'Удаляется...'
     } else {
-      this.popupBtn.textContent = 'Да'
+      this._popupBtn.textContent = 'Да'
     }
   }
 }

@@ -1,21 +1,21 @@
 export default class Api {
   constructor({baseUrl, token, cohort}) {
-    this.baseUrl = baseUrl
-    this.token = token;
-    this.cohort = cohort;
+    this._baseUrl = baseUrl
+    this._token = token;
+    this._cohort = cohort;
   }
 
   _request(adres, method, info) {
     const pattern = {
       method: method,
       headers: {
-       authorization: this.token,
+       authorization: this._token,
        'Content-Type': 'application/json',
        }
      }
      
     return fetch(
-      `${this.baseUrl}/${this.cohort}/${adres}`,
+      `${this._baseUrl}/${this._cohort}/${adres}`,
       info ? {...pattern, body: JSON.stringify(info)} : pattern
       )
       .then(res => {
